@@ -6,6 +6,10 @@
 
 
 FROM crpi-p35inr9lrgirg3t0.cn-hangzhou.personal.cr.aliyuncs.com/yaobo-box/debian:11 AS cross-base
+
+RUN sed -i 's|http://deb.debian.org/debian|http://mirrors.aliyun.com/debian|g' /etc/apt/sources.list && \
+    sed -i 's|http://deb.debian.org/debian-security|http://mirrors.aliyun.com/debian-security|g' /etc/apt/sources.list
+
 RUN apt-get update
 RUN apt-get install --assume-yes --no-install-recommends \
     autoconf \
